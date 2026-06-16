@@ -159,3 +159,98 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+  // =========================
+  // ELEMENTS
+  // =========================
+  const openBtn = document.getElementById("aiBtn");
+  const popup = document.getElementById("aiPopup");
+  const closeBtn = document.getElementById("closeAi");
+
+  const input = document.getElementById("aiInput");
+  const sendBtn = document.getElementById("aiSend");
+  const aiBody = document.getElementById("aiBody");
+
+  // Safety check (prevents silent errors)
+  if (!openBtn || !popup || !closeBtn || !input || !sendBtn || !aiBody) {
+    console.error("AI Popup: Missing elements in HTML");
+    return;
+  }
+
+  // =========================
+  // OPEN POPUP
+  // =========================
+  openBtn.addEventListener("click", () => {
+    popup.classList.remove("hidden");
+    input.focus();
+  });
+
+  // =========================
+  // CLOSE POPUP
+  // =========================
+  closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+  });
+
+  // Close when clicking outside box
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.classList.add("hidden");
+    }
+  });
+
+  // =========================
+  // FAKE AI LOGIC
+  // =========================
+  function getReply(msg) {
+    msg = msg.toLowerCase();
+
+    if (msg.includes("bridal")) {
+      return "💍 Try soft glam bridal look with gold + pink tones.";
+    }
+
+    if (msg.includes("hair")) {
+      return "💇‍♀️ Loose curls or low bun with flowers will look amazing.";
+    }
+
+    if (msg.includes("makeup")) {
+      return "💄 Go for dewy base, nude lips, and soft shimmer eyes.";
+    }
+
+    if (msg.includes("salon")) {
+      return "🏆 I suggest checking top-rated salons in South Delhi for bridal looks.";
+    }
+
+    return "✨ I can help with bridal, hair, makeup, or salon suggestions!";
+  }
+
+  // =========================
+  // SEND MESSAGE
+  // =========================
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    // User message
+    aiBody.innerHTML += `<p class="ai-msg"><b>You:</b> ${text}</p>`;
+
+    input.value = "";
+
+    // AI response
+    setTimeout(() => {
+      aiBody.innerHTML += `<p class="ai-msg"><b>AI:</b> ${getReply(text)}</p>`;
+      aiBody.scrollTop = aiBody.scrollHeight;
+    }, 400);
+  }
+
+  sendBtn.addEventListener("click", sendMessage);
+
+  // Enter key support
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  });
+
+});
