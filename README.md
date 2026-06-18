@@ -1,11 +1,12 @@
 # Delhi-Bridal-Beauty-Booking-Platform
 A modern Delhi bridal beauty marketplace that helps users discover salons, compare services, and book appointments. Includes curated salon listings, reviews, booking flow, and an AI assistant for personalized bridal style recommendations.
-
-# 💄 Delhi Bridal Beauty Booking Platform
-
-A modern multi-salon bridal and beauty booking website featuring luxury themed pages, service catalogs, and realistic client reviews. Built using HTML, CSS, and JavaScript with a strong focus on UI/UX design and responsiveness.
+Built using HTML, CSS, and JavaScript with a strong focus on UI/UX design and responsiveness.
 
 ---
+## 🚀 Live Demo
+
+👉 Visit the website here:  
+https://beautybookingplatform.netlify.app/
 
 ## ✨ Features
 
